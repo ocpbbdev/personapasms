@@ -1,0 +1,31 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" 
+xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" 
+xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <SOAP-ENV:Header>
+    <md:metadata>
+      <serviceId>modifyCustomerAvatar</serviceId>
+      <serviceVersion>1.0</serviceVersion>
+      <sessionId>%s</sessionId>
+      <executingChannel>
+        <mnemonic>%s</mnemonic>
+      </executingChannel>
+      <featureId>%s</featureId>
+      <locale>%s</locale>
+    </md:metadata>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <srv:modifyCustomerAvatarRequest xmlns:srv="http://www.technisys.net/cmm/services/modifyCustomerAvatar/rq/v1.0">
+      <customer name="customer">
+        <identificationType>
+          <mnemonic>%s</mnemonic>
+        </identificationType>
+        <avatar>
+          <avatarNumber>%s</avatarNumber>
+        </avatar>
+        <customerId>%s</customerId>
+      </customer>
+    </srv:modifyCustomerAvatarRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"> 
+ <SOAP-ENV:Header>
+   <md:metadata>
+     <serviceId>processSystemUserLoginSimplify</serviceId> 
+     <featureId>ROL@6004</featureId>
+     <executingChannel>
+       <mnemonic>CTL</mnemonic>
+     </executingChannel> 
+     <locale>es_AR</locale> 
+   </md:metadata> 
+ </SOAP-ENV:Header> 
+ <SOAP-ENV:Body>
+   <srv:processSystemUserLoginSimplifyRequest xmlns:srv="http://www.technisys.net/cmm/services/processSystemUserLoginSimplify/rq/v0.0"> 
+    <channel name="channel">
+       <mnemonic>IN</mnemonic>
+     </channel>
+     <systemUser name="systemUser">
+       <institution>
+         <identificationNumber>${identificationNumber}</identificationNumber>
+         <identificationType>
+           <mnemonic>${mnemonic}</mnemonic>
+         </identificationType>
+       </institution>
+     </systemUser>
+   </srv:processSystemUserLoginSimplifyRequest>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

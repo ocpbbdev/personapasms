@@ -1,0 +1,12 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.bolivariano.microservice.personapasms.configuration.DataSourceManager",
+      "name": "spring.sybase.datasource",
+      "sourceMethod": "public javax.sql.DataSource sybaseDataSource() ",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}

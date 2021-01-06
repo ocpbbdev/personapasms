@@ -1,0 +1,54 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <SOAP-ENV:Header>
+    <md:metadata>
+      <serviceId>modifyAuthenticationToUser</serviceId>
+      <serviceVersion>0.0</serviceVersion>
+      <sessionId>${sessionId}</sessionId>
+      <organizationType>
+        <mnemonic>RETAIL_BANKING</mnemonic>
+      </organizationType>
+      <executingChannel>
+        <mnemonic>${channel}</mnemonic>
+      </executingChannel>
+      <address>ip=${ip};</address>
+      <featureId>ROL@2006</featureId>
+      <locale>en_PA</locale>
+      <executingOperatorId>${userId}</executingOperatorId>
+      <cmmDispatchDate>${cmmDispatchDate}</cmmDispatchDate>
+    </md:metadata>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <srv:modifyAuthenticationToUserRequest xmlns:srv="http://www.technisys.net/cmm/services/modifyAuthenticationToUser/rq/v0.0">
+      <electronicsContact name="electronicsContact">
+        <emailAddressComplete>${emailAddressComplete}</emailAddressComplete>
+      </electronicsContact>
+      <authentication name="currentAuthentication">
+        <authenticationSchema>
+          <authenticationSchemaId>${authenticationSchema}</authenticationSchemaId>
+        </authenticationSchema>
+        <dynamicAuthenticacion>
+          <authenticationAnswer>${keyValue}</authenticationAnswer>
+        </dynamicAuthenticacion>
+      </authentication>
+      <authentication name="newAuthentication">
+        <dynamicAuthenticacion>
+          <authenticationAnswer>${keyValueNew}</authenticationAnswer>
+          <alias>${keyAlias}</alias>
+        </dynamicAuthenticacion>
+      </authentication>
+      <customer name="customer">
+        <customerId>${customerId}</customerId>
+      </customer>
+      <channel name="channel">
+        <identificationChannel>
+          <mnemonic>${channel}</mnemonic>
+        </identificationChannel>
+      </channel>
+      <channel name="channelOperation">
+        <identificationChannel>
+          <mnemonic>${channel}</mnemonic>
+        </identificationChannel>
+      </channel>
+    </srv:modifyAuthenticationToUserRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

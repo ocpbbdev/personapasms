@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <SOAP-ENV:Header>
+    <md:metadata>
+      <serviceId>processSystemUserLogin</serviceId>
+      <serviceVersion>3.0</serviceVersion>
+      <sessionId>${sessionId}</sessionId>
+      <targetChannel>
+        <mnemonic>${channel}</mnemonic>
+      </targetChannel>
+      <executingChannel>
+        <mnemonic>${channel}</mnemonic>
+      </executingChannel>
+      <address>ip=${address};</address>
+      <locale>en_PA</locale>
+      <cmmDispatchDate>${cmmDispatchDate}</cmmDispatchDate>
+      <customProperties/>  
+    </md:metadata>
+    <wsse:Security SOAP-ENV:mustUnderstand="true" xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <saml2:Assertion ID="_D0DAB722876CE295AF15290118860663757" IssueInstant="2018-06-14T21:31:26.066Z" Version="2.0" xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="saml2:AssertionType">
+        <saml2:Issuer>CyberbankMultichannelManager</saml2:Issuer>
+        <saml2:Subject>
+          <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"/>
+          <saml2:SubjectConfirmation Method="${subjectConfirmationMethod}">
+            <saml2:SubjectConfirmationData Recipient="true" xsi:type="saml2:KeyInfoConfirmationDataType">
+              <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:KeyAlias>${keyAlias}</ds:KeyAlias>
+                <ds:KeyValue>${keyValue}</ds:KeyValue>
+              </ds:KeyInfo>
+              <saml2:authenticationMethodSchema>${authenticationMethodSchema}</saml2:authenticationMethodSchema>              
+            </saml2:SubjectConfirmationData>
+          </saml2:SubjectConfirmation>
+        </saml2:Subject>
+      </saml2:Assertion>
+    </wsse:Security>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <srv:processSystemUserLoginRequest xmlns:srv="http://www.technisys.net/cmm/services/processSystemUserLogin/rq/v3.0">
+      <electronicsContact name="electronicsContact">
+        <emailAddressComplete>${emailAddressComplete}</emailAddressComplete>
+      </electronicsContact>
+     <customer name="customer">
+        <token>
+           <value>${token}</value>
+        </token>
+      </customer>
+    </srv:processSystemUserLoginRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

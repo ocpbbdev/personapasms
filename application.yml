@@ -1,0 +1,131 @@
+server:
+  port: 7003 
+  ssl: 
+    key-alias: msawsd1
+    key-store: IdentityOnBoarding.jks
+    key-store-password: desarrollo
+    key-store-type: JKS
+  security:
+    encrypUsername: 
+    encrypPassword: 
+  undertow:
+    worker-threads: 10
+
+server_clave_rgcm:
+server_user_rgcm:
+
+logging:
+  config: logback.xml
+  
+info:
+  version: 1.0.0
+  date: 2018-05-17
+  stage: desarrollo 
+
+camel:
+  springboot:
+    xml-rests: false
+    xml-routes: false
+
+orchestrator:
+  context-root: /Pasivos
+  camel:
+    tracing: true
+    route: "classpath:routes.xml"
+    policy: oswm-wss11-policy.xml
+  endpoint:
+    wsdl: "classpath:config/wsdl/PersonapasMS.wsdl"
+    name: "{http://www.bolivariano.com/Pasivos/ws/PersonapasMS/v1.0}PersonapasPort"
+    service: "{http://www.bolivariano.com/Pasivos/ws/PersonapasMS/v1.0}PersonapasMS"
+    address-no-secure: /PersonapasMSNS
+    address: /PersonapasMS
+
+spring:
+  sybase:
+    datasource:
+      username: 
+      password: 
+      url: jdbc:sybase:Tds:172.16.23.22:2030?SERVER_INITIATED_TRANSACTIONS=false
+      driver-class-name: com.sybase.jdbc4.jdbc.SybDriver
+      max-wait: 7000
+      max-active: 10
+      max-idle: 5
+      min-idle: 1
+      initial-size: 10
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: "SELECT 1"
+      validation-interval: 30000
+      #remove-abandoned: true
+      #remove-abandoned-timeout: 50
+      #time-between-eviction-runs-millis: 30000
+      #min-evictable-idle-time-millis: 50000
+      connection-properties: SERVER_INITIATED_TRANSACTIONS=false
+
+    
+client:
+  ssl:
+    trustStore: IdentityOnBoarding.jks
+    type: JKS
+    trustStorePassword: 
+  service:
+    oracle:
+      username: 
+      password: 
+      encrypUsername: 
+    camel:
+      username: 
+      password: 
+      encrypUsername: 
+  device:
+    #prefix: WAP|
+    prefix: ACT|
+    machineSet.accion: A
+    machineSet.pattern: "***"
+    minCaracteristicas: 13
+    userNoEntrust: 5205139
+  ws:
+    address:
+     framework: 
+        url: https://soavides.bolivariano.fin.ec:5554/FrameworkSeguridad/proxy/FrameworkSeguridad?wsdl
+        conntimeout: 2000
+        readtimeout: 20000
+        #appId: 569
+        appId: 573     
+        appUser: apl_onboardingcta
+        prefix: ACT
+        tipo: MS
+     homologarMensaje:
+        url: https://soavides.bolivariano.fin.ec:4443/Genericos/proxy/HomologarMensaje?wsdl
+        conntimeout: 2000
+        readtimeout: 20000
+        sistema: wap_homologa_errores
+     registroCivil:
+        url: https://soavides.bolivariano.fin.ec:5554/RegistroCivil/proxy/RegistroCivil?wsdl
+        conntimeout: 2000
+        readtimeout: 20000
+     listaNegra:
+        url: http://bixgdessrv/OFACBBServicios/WsOFACXGServicioAct/Service.asmx?wsdl
+        conntimeout: 2000
+        readtimeout: 20000
+     registrocivilM:
+        url: https://sesdessrv.bolivariano.fin.ec:4443/ConsultasRCG/ServiceConsultasRCG.svc?wsdl
+        conntimeout: 90000
+        readtimeout: 90000
+     avisos24:
+        url: https://soavides.bolivariano.fin.ec:5554/ClienteCash/proxy/ClienteCashSinSeg?wsdl #https://soa.bolivariano.fin.ec:4443/ClienteCash/proxy/ClienteCash?wsdl
+        conntimeout: 200000
+        readtimeout: 2000000
+personapasms:
+  trn1: 166
+  trn2: 167
+  trn3: 1226
+  trn4: 158
+  trn5: 159
+  trn6: 1230
+  srv: 172.0.0.0
+  lsrv: UNIX
+context:
+  initializer:
+    classes: com.bolivariano.utilitario.env.FrameworkContextInitializer
+parametro-dias-expiracion: DECAN

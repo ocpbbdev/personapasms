@@ -1,0 +1,31 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <SOAP-ENV:Header>
+    <md:metadata>
+      <serviceId>processCustomerLogin</serviceId>
+      <serviceVersion>0.0</serviceVersion>
+      <sessionId>${sessionId}</sessionId>
+      <targetChannel>
+        <mnemonic>${channel}</mnemonic>
+      </targetChannel>
+      <executingChannel>
+        <mnemonic>${channel}</mnemonic>
+      </executingChannel>
+      <address>ip=${address};</address>
+      <locale>en_PA</locale>
+      <cmmDispatchDate>${cmmDispatchDate}</cmmDispatchDate>
+      <customProperties/>
+    </md:metadata>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <srv:processCustomerLoginRequest xmlns:srv="http://www.technisys.net/cmm/services/processCustomerLogin/rq/v0.0">
+      <customer name="customer">
+        <alias>${alias}</alias>
+      </customer>
+      <channel name="channel">
+        <identificationChannel>
+          <mnemonic>${channel}</mnemonic>
+        </identificationChannel>
+      </channel>
+    </srv:processCustomerLoginRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

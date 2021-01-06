@@ -1,0 +1,81 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.technisys.net/cmm/services/errors/v1.0" xmlns:md="http://www.technisys.net/cmm/services/metadata/v2.0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <SOAP-ENV:Header>
+    <md:metadata>
+      <serviceId>insertCustomerSelfAdhesion</serviceId>
+      <serviceVersion>0.0</serviceVersion>
+      <sessionId>${sessionId}</sessionId>
+      <targetChannel>
+        <mnemonic>${channel}</mnemonic>
+      </targetChannel>
+      <executingChannel>
+        <mnemonic>${channel}</mnemonic>
+      </executingChannel>
+      <address>ip=${ip};</address>
+      <featureId>ROL@2006</featureId>
+      <locale>en_PA</locale>
+      <cmmDispatchDate>${cmmDispatchDate}</cmmDispatchDate>
+      <customProperties/>
+    </md:metadata>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <srv:insertCustomerSelfAdhesionRequest xmlns:srv="http://www.technisys.net/cmm/services/insertCustomerSelfAdhesion/rq/v0.0">
+      <electronicsContact name="electronicsContact">
+        <emailAddressComplete>${emailAddressComplete}</emailAddressComplete>
+      </electronicsContact>
+      <authentication name="authentication">
+        <dynamicAuthenticacion>
+          <authenticationType>
+            <authenticationTypeId>METODO_AUTENTICACION@3</authenticationTypeId>
+          </authenticationType>
+          <channel>
+            <identificationChannel>
+              <mnemonic>${channel}</mnemonic>
+            </identificationChannel>
+          </channel>
+          <authenticationAnswer>${keyValue}</authenticationAnswer>
+          <alias>${keyAlias}</alias>
+        </dynamicAuthenticacion>
+      </authentication>
+      <token name="adhesionToken">
+        <value>${token}</value>
+      </token>
+      <customer name="customer">
+        <originatingBranch>
+          <sBranchId>${sBranchId}</sBranchId>
+        </originatingBranch>
+        <identificationType>
+          <mnemonic>${identificationType}</mnemonic>
+        </identificationType>
+        <responsabilityOfficer>
+          <officerId>${officerId}</officerId>
+          <description>${description}</description>
+        </responsabilityOfficer>
+        <residenceCode>
+          <mnemonic>${residenceCode}</mnemonic>
+        </residenceCode>
+        <avatar>
+          <avatarNumber>15</avatarNumber>
+        </avatar>
+        <electronicsContact>
+          <emailAddressComplete>${emailAddressComplete}</emailAddressComplete>
+        </electronicsContact>
+        <firstName1>${firstName1}</firstName1>
+        <lastName1>${lastName1}</lastName1>
+        <bankingType>
+          <mnemonic>BA</mnemonic>
+        </bankingType>
+        <identificationNumber>${identificationNumber}</identificationNumber>
+        <isEmployee>${isEmployee}</isEmployee>
+        <bankCustomerCode>${bankCustomerCode}</bankCustomerCode>
+        <signedTermsAndConditions>true</signedTermsAndConditions>
+        <termsAndConditionsVersion>1</termsAndConditionsVersion>
+      </customer>
+      <generic>
+        <nombreFueraLogin type="java.lang.String">${firstName1}</nombreFueraLogin>
+        <socialNetworks type="java.lang.Boolean">false</socialNetworks>
+        <tipoBancaFueraLogin type="java.lang.String">true</tipoBancaFueraLogin>
+        <identificacionFueraLogin type="java.lang.String">${identificationNumberMask}</identificacionFueraLogin>
+      </generic>
+    </srv:insertCustomerSelfAdhesionRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

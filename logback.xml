@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property file="file.properties" />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | %X{secuencial} | [%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>${fileName}/cuentapasms.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		  <fileNamePattern>${fileName}/cuentapasms.%d{yyyy-MM-dd}.log</fileNamePattern>		
+		  <maxHistory>${maxHist}</maxHistory>
+		  <totalSizeCap>${totalSize}</totalSizeCap>		
+		</rollingPolicy>
+      <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | %X{secuencial} | [%thread] - %msg%n</pattern>
+      </encoder>
+    </appender> 
+
+    <logger name="com.bolivariano.microservice.cuentapasms" level="${level}">
+    </logger>
+    
+    <root level="${rootlevel}">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ROLLING" />
+    </root>
+
+</configuration>
