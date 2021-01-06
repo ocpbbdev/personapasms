@@ -281,17 +281,15 @@
 		</dependency-->
 		
 	</dependencies>
-	 <!--<repositories>
+	 <repositories>
       <repository>
-         <id>companyname.lib1</id>
-         <url>http://download.companyname.org/maven2/lib1</url>
-      </repository>
-      <repository>
-         <id>companyname.lib2</id>
-         <url>http://download.companyname.org/maven2/lib2</url>
-      </repository>
+   <id>project-local-repo</id>
+   <url>file://${project.basedir}/local/</url>
+</repository>
+      
+      
    </repositories>
-   -->
+   
 
 	<build>
 		<plugins>
