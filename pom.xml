@@ -283,11 +283,9 @@
 	</dependencies>
 	 <repositories>
       <repository>
-   <id>project-local-repo</id>
-   <url>file://${project.basedir}/local/</url>
-</repository>
-      
-      
+   			<id>project-local-repo</id>
+   			<url>file://${project.basedir}/local/</url>
+	</repository>
    </repositories>
    
 
